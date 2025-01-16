@@ -1,0 +1,42 @@
+package pages
+
+import "os"
+
+func isDev() bool {
+	env := os.Getenv("DEV")
+	return env == "true"
+}
+
+templ hrscripts() {
+	if isDev() {
+		<!-- hot reload stuff, disabled on prod -->
+		<div>
+			<script src="/static/hr.js"></script>
+			<div hx-get="/reload" hx-trigger="every 1s" hx-swap="none" hx-target="#hr">
+				<input type="hidden" id="hr" value=""/>
+			</div>
+		</div>
+	} else {
+		<!-- hr off -->
+	}
+}
+
+templ Layout(title string, bodyContent templ.Component) {
+	<!DOCTYPE html>
+	<html lang="en" data-theme="emerald">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+			<title>{ title }</title>
+			<link rel="icon" href="/static/favicon.svg" type="image/svg+xml"/>
+			<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"/>
+			<link href="/static/styles.css" rel="stylesheet"/>
+			<script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+		</head>
+		<body onload={ pages.BodyScripts() }>
+			@bodyContent
+			@hrscripts
+		</body>
+	</html>
+}
