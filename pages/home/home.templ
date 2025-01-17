@@ -1,7 +1,7 @@
 package home
 
 templ home(name string) {
-	<div class="h-screen bg-sky-50 flex items-center justify-center flex-col gap-1">
+	<div class="h-screen bg-sky-50 flex items-center justify-center flex-col gap-2">
 		<h1 class="text-sky-600 text-3xl font-bold">Hello { name }</h1>
 		@counter("0")
 		<button
@@ -14,6 +14,20 @@ templ home(name string) {
 		>
 			Increment
 		</button>
+		<div class="px-3 py-1.5 rounded-lg bg-white max-w-sm space-y-2">
+			<h2 class="text-sky-600 text-xl font-bold">
+				Get your hands dirty
+			</h2>
+			<p>
+				Start changing <code class="bg-gray-50 text-sm">/pages/home/home.templ</code> and 
+				<code class="bg-gray-50 text-sm">/pages/home/home_handler.go</code> to create your 
+				first page.
+			</p>
+			<p>
+				Create new pages under <code class="bg-gray-50 text-sm">/pages/</code> and 
+				hook them up in <code class="bg-gray-50 text-sm">/server.go</code>
+			</p>
+		</div>
 	</div>
 }
 
