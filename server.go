@@ -1,10 +1,12 @@
 package main
 
 import (
-	"github.com/gofiber/fiber/v2"
 	"go-htmx-starter/internal"
 	"go-htmx-starter/pages/home"
 	"os"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/google/uuid"
 )
 
 // splitting individual page routing to a separate func for clarity
@@ -15,6 +17,7 @@ func router(app *fiber.App) {
 }
 
 func StartServer() {
+	build_id := uuid.New().String()
 	app := fiber.New()
 	app.Use(internal.HotReloadLogger())
 	app.Static("/static", "./static")
@@ -25,23 +28,9 @@ func StartServer() {
 	isDev := os.Getenv("DEV")
 	if isDev == "true" {
 		app.Get("/reload", func(c *fiber.Ctx) error {
-			key, err := internal.ReadHotReloadKey()
-			if err != nil {
-				return err
-			}
 			c.Status(200)
-			return c.SendString(key)
+			return c.SendString(build_id)
 		})
-
-		app.Post("/reload/new", func(c *fiber.Ctx) error {
-			key, err := internal.WriteHotReloadKey()
-			if err != nil {
-				return err
-			}
-			c.Status(201)
-			return c.SendString(key)
-		})
-
 	}
 	app.Listen(":3000")
 }

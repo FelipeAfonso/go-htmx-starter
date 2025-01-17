@@ -8,7 +8,7 @@ import (
 )
 
 func HomeHandler(c *fiber.Ctx) error {
-	name := "Mark"
+	name := "from the Server!"
 	page := home(name)
 	template := templ.Handler(
 		pages.Layout(
