@@ -1,4 +1,4 @@
-# gleam_htmx_tw
+# Go + HTMX Starter 
 
 I didn't like any of the current GO/HTMX starter out there, so I decided to build my own.
 I hadn't found any templates out there that had proper hot reloading, which IMO is very important for UI work.
