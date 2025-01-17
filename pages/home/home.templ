@@ -1,7 +1,27 @@
 package home
 
 templ home(name string) {
-	<div class="h-screen bg-sky-50 flex items-center justify-center flex-col">
+	<div class="h-screen bg-sky-50 flex items-center justify-center flex-col gap-1">
 		<h1 class="text-sky-600 text-3xl font-bold">Hello { name }</h1>
+		@counter("0")
+		<button
+			class="px-3 py-1.5 bg-sky-600 text-white rounded font-bold"
+			hx-trigger="click"
+			hx-post="/api/increment"
+			hx-include="[name='count']"
+			hx-target="#counter"
+			hx-swap="outerHTML"
+		>
+			Increment
+		</button>
+	</div>
+}
+
+templ counter(value string) {
+	<div id="counter">
+		<p>
+			You've clicked { value } times
+		</p>
+		<input type="hidden" name="count" value={ value }/>
 	</div>
 }

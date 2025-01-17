@@ -11,6 +11,7 @@ import (
 // splitting individual page routing to a separate func for clarity
 func router(app *fiber.App) {
 	app.Get("/", home.HomeHandler)
+	app.Post("/api/increment", home.IncrementCounter)
 	// create your handlers and link them in a route here
 	app.Get("/", home.HomeHandler)
 }
