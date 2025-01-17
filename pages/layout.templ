@@ -1,13 +1,9 @@
 package pages
 
-import (
-	"log"
-	"os"
-)
+import "os"
 
 func isDev() bool {
 	env := os.Getenv("DEV")
-	log.Printf("env dev: %s", env)
 	return env == "true"
 }
 

@@ -10,7 +10,6 @@ setTimeout(() => {
       if (!lastId) evt.detail.target.value = res;
       else if (res !== lastId) {
         target.value = evt.detail.xhr.response;
-        console.log("detected change, reloading");
         setTimeout(() => {
           window.location.reload(true);
         }, 500);

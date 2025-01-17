@@ -1,12 +1,11 @@
 package main
 
 import (
+	"github.com/gofiber/fiber/v2"
+	"github.com/google/uuid"
 	"go-htmx-starter/internal"
 	"go-htmx-starter/pages/home"
 	"os"
-
-	"github.com/gofiber/fiber/v2"
-	"github.com/google/uuid"
 )
 
 // splitting individual page routing to a separate func for clarity
