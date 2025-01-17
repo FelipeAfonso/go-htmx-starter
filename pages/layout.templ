@@ -1,23 +1,29 @@
 package pages
 
-import "os"
+import (
+	"log"
+	"os"
+)
 
 func isDev() bool {
 	env := os.Getenv("DEV")
+	log.Printf("env dev: %s", env)
 	return env == "true"
 }
 
 templ hrscripts() {
 	if isDev() {
-		<!-- hot reload stuff, disabled on prod -->
 		<div>
+			<!-- hot reload stuff, disabled on prod -->
 			<script src="/static/hr.js"></script>
 			<div hx-get="/reload" hx-trigger="every 1s" hx-swap="none" hx-target="#hr">
 				<input type="hidden" id="hr" value=""/>
 			</div>
 		</div>
 	} else {
-		<!-- hr off -->
+		<div>
+			<!-- hr off -->
+		</div>
 	}
 }
 
@@ -34,9 +40,9 @@ templ Layout(title string, bodyContent templ.Component) {
 			<link href="/static/styles.css" rel="stylesheet"/>
 			<script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
 		</head>
-		<body onload={ pages.BodyScripts() }>
+		<body>
 			@bodyContent
-			@hrscripts
+			@hrscripts()
 		</body>
 	</html>
 }

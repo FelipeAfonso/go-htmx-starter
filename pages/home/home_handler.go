@@ -8,13 +8,13 @@ import (
 )
 
 func HomeHandler(c *fiber.Ctx) error {
-	name := "John"
+	name := "Mark"
 	page := home(name)
 	template := templ.Handler(
-	pages.Layout(
+		pages.Layout(
 			"Go + HTMX starter",
 			page,
-			)
-		)
+		),
+	)
 	return adaptor.HTTPHandler(template)(c)
 }
