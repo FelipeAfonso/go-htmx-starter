@@ -2,7 +2,7 @@
   "name": "go-htmx-starter",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "DEV=true concurrently \"air\" \"vite\"",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -17,6 +17,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "concurrently": "^9.1.2",
     "htmx.org": "^2.0.4"
   }
 }

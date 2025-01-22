@@ -10,22 +10,6 @@ func isDev() bool {
 	return env == "true"
 }
 
-templ hrscripts() {
-	if isDev() {
-		<div>
-			<!-- hot reload stuff, disabled on prod -->
-			<script src="/static/hr.js"></script>
-			<div hx-get="/reload" hx-trigger="every 1s" hx-swap="none" hx-target="#hr">
-				<input type="hidden" id="hr" value=""/>
-			</div>
-		</div>
-	} else {
-		<div>
-			<!-- hr off -->
-		</div>
-	}
-}
-
 templ Layout(title string, bodyContent templ.Component) {
 	<!DOCTYPE html>
 	<html lang="en" data-theme="emerald">
@@ -36,18 +20,15 @@ templ Layout(title string, bodyContent templ.Component) {
 			<title>{ title }</title>
 			<link rel="icon" href="/static/favicon.svg" type="image/svg+xml"/>
 			<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"/>
-			<!-- <link href="/static/styles.css" rel="stylesheet"/> -->
 			if isDev() {
 				<script type="module" src="http://localhost:5173/@vite/client"></script>
 				<script type="module" src="http://localhost:5173/assets/js/main.js"></script>
 			} else {
-				<link rel="stylesheet" href="/dist/assets/main-[hash].css"/>
-				<script type="module" src="/dist/js/main-[hash].js"></script>
+				@getProductionAssets()
 			}
 		</head>
 		<body>
 			@bodyContent
-			@hrscripts()
 		</body>
 	</html>
 }

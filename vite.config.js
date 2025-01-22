@@ -1,7 +1,9 @@
 import { defineConfig } from "vite";
 import path from "path";
+import customHmrPlugin from "./assets/vite-hmr-plugin";
 
 export default defineConfig({
+  plugins: [customHmrPlugin()],
   build: {
     outDir: "dist",
     emptyOutDir: true,
@@ -18,7 +20,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5173,
+    hmr: true,
   },
   css: {
     postcss: true,
