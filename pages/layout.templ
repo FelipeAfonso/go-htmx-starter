@@ -1,6 +1,9 @@
 package pages
 
-import "os"
+import (
+	"go-htmx-starter/internal"
+	"os"
+)
 
 func isDev() bool {
 	env := os.Getenv("DEV")
@@ -33,12 +36,29 @@ templ Layout(title string, bodyContent templ.Component) {
 			<title>{ title }</title>
 			<link rel="icon" href="/static/favicon.svg" type="image/svg+xml"/>
 			<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"/>
-			<link href="/static/styles.css" rel="stylesheet"/>
-			<script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+			<!-- <link href="/static/styles.css" rel="stylesheet"/> -->
+			if isDev() {
+				<script type="module" src="http://localhost:5173/@vite/client"></script>
+				<script type="module" src="http://localhost:5173/assets/js/main.js"></script>
+			} else {
+				<link rel="stylesheet" href="/dist/assets/main-[hash].css"/>
+				<script type="module" src="/dist/js/main-[hash].js"></script>
+			}
 		</head>
 		<body>
 			@bodyContent
 			@hrscripts()
 		</body>
 	</html>
+}
+
+templ getProductionAssets() {
+	if manifest := ctx.Value("manifest").(map[string]internal.ManifestEntry); manifest != nil {
+		if entry, ok := manifest["assets/js/main.js"]; ok {
+			for _, css := range entry.CSS {
+				<link rel="stylesheet" href={ "/dist/" + css }/>
+			}
+			<script type="module" src={ "/dist/" + entry.File }></script>
+		}
+	}
 }

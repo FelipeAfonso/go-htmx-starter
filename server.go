@@ -19,8 +19,11 @@ func router(app *fiber.App) {
 func StartServer() {
 	build_id := uuid.New().String()
 	app := fiber.New()
+	manifest, _ := internal.LoadManifest()
+	app.Use(internal.ManifestHandler(manifest))
 	app.Use(internal.HotReloadLogger())
 	app.Static("/static", "./static")
+	app.Static("/dist", "./dist")
 
 	router(app)
 
