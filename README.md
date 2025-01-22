@@ -6,9 +6,15 @@ So, my goal was to create the simplest base I could start working with. The HR d
 
 ## Development
 
+This project uses Bun to handle client side stuff. [Pay them a visit to install it first!](https://bun.sh/)
+You'll probably need to install [ Air ](https://github.com/air-verse/air) too. And you know, Go stuff...
 Use the following command to start your web page at http://localhost:3000
 ```sh
-./watch-dev.sh # to start developing with hot reload
+bun install # for the first time building it
+go mod install
+bun dev
 ```
 
-Right now it has no build step, but I'll update this eventually when I need to deploy the project this is based off.
+## Deployment
+
+Dockerfile and docker-compose are included, just run `docker compose up --build` to run locally
