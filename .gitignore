@@ -3,3 +3,4 @@ tmp
 .hrid
 static/styles.css
 node_modules
+dist
