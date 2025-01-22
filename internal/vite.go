@@ -17,7 +17,7 @@ type ManifestEntry struct {
 // LoadManifest loads the Vite manifest file
 func LoadManifest() (map[string]ManifestEntry, error) {
 	fallback := make(map[string]ManifestEntry)
-	data, err := os.ReadFile("dist/manifest.json")
+	data, err := os.ReadFile("dist/.vite/manifest.json")
 	if err != nil {
 		return fallback, err
 	}
