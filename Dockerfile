@@ -1,5 +1,5 @@
 # STEP 1: Build frontend assets
-FROM oven/bun:1-alpine AS frontend-builder
+FROM oven/bun:1 AS frontend-builder
 
 WORKDIR /app
 
