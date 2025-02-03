@@ -1,5 +1,3 @@
-version: '3.3'
-
 #services describe the containers that will start
 services:
   # api is the container name for our Go API

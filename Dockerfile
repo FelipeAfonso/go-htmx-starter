@@ -8,13 +8,12 @@ COPY package.json bun.lockb ./
 
 # Install dependencies
 RUN bun install --frozen-lockfile
-
+# RUN bun add lightningcss-linux-x64-gnu @tailwindcss/oxide-linux-x64-gnu
 # Copy frontend source files
 COPY assets/ ./assets/
 COPY pages/ ./pages/
 COPY static/ ./static/
 COPY vite.config.js ./
-COPY tailwind.config.js ./
 COPY postcss.config.cjs ./
 
 # Build frontend assets
