@@ -1,23 +1,26 @@
 {
-  "name": "go-htmx-starter",
-  "type": "module",
-  "scripts": {
-    "dev": "DEV=true concurrently \"air\" \"vite\"",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.0",
-    "@types/bun": "latest",
-    "postcss": "^8.5.1",
-    "tailwindcss": "^4.0.0",
-    "vite": "^6.0.11"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "concurrently": "^9.1.2",
-    "htmx.org": "^2.0.4"
-  }
+	"name": "go-htmx-starter",
+	"type": "module",
+	"scripts": {
+		"dev": "DEV=true concurrently \"air\" \"vite\"",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"@tailwindcss/postcss": "^4.0.0",
+		"@types/bun": "latest",
+		"postcss": "^8.5.1",
+		"prettier": "^3.5.1",
+		"prettier-plugin-tailwindcss": "^0.6.11",
+		"prettier-plugin-tailwindcss-extra": "^0.2.0",
+		"tailwindcss": "^4.0.0",
+		"vite": "^6.0.11"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"concurrently": "^9.1.2",
+		"htmx.org": "^2.0.4"
+	}
 }

@@ -1,11 +1,11 @@
 package home
 
 templ home(name string) {
-	<div class="h-screen bg-sky-50 flex items-center justify-center flex-col gap-2">
-		<h1 class="text-sky-600 text-3xl font-bold">Hello { name }</h1>
+	<div class="flex h-screen flex-col items-center justify-center gap-2 bg-sky-50">
+		<h1 class="text-3xl font-bold text-sky-600">Hello { name }</h1>
 		@counter("0")
 		<button
-			class="px-3 py-1.5 bg-sky-600 text-white rounded-sm font-bold"
+			class="rounded-sm bg-sky-600 px-3 py-1.5 font-bold text-white"
 			hx-trigger="click"
 			hx-post="/api/increment"
 			hx-include="[name='count']"
@@ -14,8 +14,8 @@ templ home(name string) {
 		>
 			Increment
 		</button>
-		<div class="px-3 py-1.5 rounded-lg bg-white max-w-sm space-y-2">
-			<h2 class="text-sky-600 text-xl font-bold">
+		<div class="max-w-sm space-y-2 rounded-lg bg-white px-3 py-1.5">
+			<h2 class="text-xl font-bold text-sky-600">
 				Get your hands dirty
 			</h2>
 			<p>
