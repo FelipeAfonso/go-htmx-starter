@@ -25,7 +25,7 @@ Dockerfile and docker-compose are included, just run `docker compose up --build`
 Besides using `gofmt` for most of the formatting, this also uses `prettier` to handle Tailwind classes sorting. So make sure your editor is ready to add `prettier` to `.templ` extensions, i.e. for conform.nvim: 
 
 ```lua
-      formatters_by_ft = {
-        templ = { 'gofmt', 'prettier' },
-      },
+formatters_by_ft = {
+  templ = { 'gofmt', 'prettier' },
+},
 ```
