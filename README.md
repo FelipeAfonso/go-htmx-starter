@@ -2,7 +2,10 @@
 
 I didn't like any of the current GO/HTMX starter out there, so I decided to build my own.
 I hadn't found any templates out there that had proper hot reloading, which IMO is very important for UI work.
-So, my goal was to create the simplest base I could start working with. The HR definitively jank, but it works most of the time.
+So, my goal was to create the simplest base I could start working with. 
+
+This is a Go Fiber boilerplate, that combines Vite/Air to handle Hot Reloading, improving the dev experience. 
+It uses Tailwindcss@v4 (with the Prettier plugin to sort classes); Vite to handle bundling of JS dependencies; and Bun to handle the installation of new dependencies.
 
 ## Development
 
@@ -34,3 +37,9 @@ formatters_by_ft = {
   templ = { 'gofmt', 'prettier' },
 },
 ```
+
+## Notes
+
+I'm personally using this in a small but active production application, and I couldn't be happier.
+I've been updating the starter as I made changes to the current active project. Its not a finished
+starter by any means, but I'm aiming to keep using and updating it.
