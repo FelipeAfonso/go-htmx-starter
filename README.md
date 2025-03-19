@@ -7,12 +7,17 @@ So, my goal was to create the simplest base I could start working with. The HR d
 ## Development
 
 This project uses Bun to handle client side stuff. [Pay them a visit to install it first!](https://bun.sh/)
-You'll probably need to install [ Air ](https://github.com/air-verse/air) too. And you know, Go stuff...
-Use the following command to start your web page at http://localhost:3000
+You'll probably need to install [ Air ](https://github.com/air-verse/air) too, and also [ Templ ](https://templ.guide/quick-start/installation). And you know, [ Go ](https://go.dev/doc/install) stuff...
 
+Run these the first time to install deps:
 ```sh
+go mod download
 bun install # for the first time building it
-go mod install
+```
+
+
+And the following commands to start your web page at ** http://localhost:3000 ** (Do not confuse with the vite's localhost:5173 that is used for bundling and tooling)
+```sh
 bun dev
 ```
 
